@@ -19,8 +19,9 @@ Dette er en **Home Assistant-integrasjon for Systemair SAVE / VTR-aggregater** v
 - Norsk og engelsk brukergrensesnitt (følger Home Assistant-språket)
 - Robust håndtering av midlertidig bortfall av Modbus-forbindelse
 
-- Bildet under viser et eksempel på et Lovelace-kort som kan bygges manuelt i Home Assistant
+Bildet under viser et eksempel på et Lovelace-kort som kan bygges manuelt i Home Assistant
 ved hjelp av entiteter fra denne integrasjonen. Selve kortet følger ikke med integrasjonen.
+
 
 
 ![Ventilasjon Kort](image/Ventilasjon%20kort.png)
@@ -122,13 +123,13 @@ I tillegg har en KI-assistent blitt brukt som støtte til feilsøking,
 refaktorering og forbedring av dokumentasjon under utviklingen av prosjektet.
 
 
-
 Denne integrasjonen er **selvstendig utviklet** som en moderne Home Assistant-integrasjon.
 
 ---
 
 ## 📝 Lisens
 MIT – se `LICENSE`.
+
 
 
 
