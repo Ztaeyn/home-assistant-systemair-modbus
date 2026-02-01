@@ -1,7 +1,8 @@
 {
-  "name": "Systemair VTR-500 Control Package",
-  "render_readme": true,
-  "content_in_root": true,
+  "name": "Systemair Modbus",
+  "content_in_root": false,
+  "domains": ["systemair_modbus"],
   "country": ["NO", "SE", "DK", "DE", "GB", "NL"],
-  "homeassistant": "2023.1.0"
+  "homeassistant": "2024.6.0"
 }
+
