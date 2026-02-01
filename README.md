@@ -19,6 +19,7 @@ Dette er en **Home Assistant-integrasjon for Systemair SAVE / VTR-aggregater** v
 - Norsk og engelsk brukergrensesnitt (følger Home Assistant-språket)
 - Robust håndtering av midlertidig bortfall av Modbus-forbindelse
 
+![Ventilasjon Kort](image/Ventilasjon kort.png)
 ---
 
 ## 📦 Installasjon (HACS)
@@ -125,4 +126,5 @@ Denne integrasjonen er **selvstendig utviklet** som en moderne Home Assistant-in
 
 ## 📝 Lisens
 MIT – se `LICENSE`.
+
 
