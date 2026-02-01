@@ -1,15 +1,27 @@
 # Changelog
 
----
+All notable changes to this project will be documented in this file.
 
-All notable changes to this project will be documented here.
-
-
----
-
-## [0.1.0] – 2026-02-01  
-### 🚀 Første offisielle utgivelse  
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-### 🚀 Initial release  
+## [1.0.0] – 2026-02-01
+### 🚀 First stable release
+
+### Added
+- First stable and fully tested release of **Systemair Modbus**
+- UI-based setup via Home Assistant Config Flow
+- Support for Systemair SAVE / VTR ventilation units using Modbus TCP
+- Sensors for temperatures, operational status, and calculated values
+- Binary sensors for alarms and unit states
+- Number entities for setpoints and adjustable parameters
+- Select entities for operation modes (Auto, Manual, Boost, Away, etc.)
+- Full support for the Home Assistant device and entity model
+- English and Norwegian translations (`en`, `nb`)
+- Local polling (`iot_class: local_polling`)
+
+### Notes
+- This is an unofficial community integration and is not affiliated with Systemair
+
