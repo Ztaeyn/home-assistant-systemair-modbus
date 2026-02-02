@@ -12,25 +12,27 @@ from .const import DOMAIN
 from .entity import SystemairBaseEntity
 
 
+# Prefixes we want to strip from internal keys to make nicer names/object_ids.
+# Keep order from most specific to least specific.
+_STRIP_PREFIXES: tuple[str, ...] = (
+    "systemair_save_",
+    "save_",
+    "systemair_",
+)
+
+
+def _strip_prefixes(key: str) -> str:
+    """Strip known prefixes from a key and return the remainder."""
+    s = key.strip()
+    for prefix in _STRIP_PREFIXES:
+        if s.startswith(prefix):
+            return s[len(prefix) :]
+    return s
+
+
 def _pretty_reg_name(key: str) -> str:
     """Make register keys human-friendly (English fallback labels)."""
-    s = key
-    for prefix in (
-        "systemair_save_vtr_",
-        "save_vtr_",
-        "vtr_",
-        "systemair_",
-    ):
-        if s.startswith(prefix):
-            s = s[len(prefix):]
-            # Strip model number prefix like "500_" if present
-            m = re.match(r"^\d+_(.+)$", s)
-            if m:
-                s = m.group(1)
-
-            break
-
-    base = s.lower().strip("_")
+    base = _strip_prefixes(key).lower().strip("_")
 
     # Direct mappings for the most-used/most-visible values
     direct = {
@@ -71,7 +73,7 @@ def _pretty_reg_name(key: str) -> str:
         "filter_replacement_alarm": "Filter replacement alarm",
         "filter_replacement_period": "Filter replacement interval",
         "filter_warning_alarm": "Filter warning",
-        "filter_warning_alarm_delay_count": "Filter warning – forsinkelse",
+        "filter_warning_alarm_delay_count": "Filter warning – delay",
 
         # Speeds (common)
         "saf_speed_rpm": "SAF fan speed (RPM)",
@@ -113,12 +115,6 @@ def _pretty_reg_name(key: str) -> str:
 
     # Fan-friendly formatting
     if fan:
-        if words and words[0] == "hastighet":
-            rest = " ".join(words[1:]).strip()
-            if rpm:
-                return f"{fan} – speed (RPM)" if not rest else f"{fan} – speed {rest} (RPM)"
-            return f"{fan} – speed" if not rest else f"{fan} – speed {rest}"
-
         phrase = " ".join(words).strip()
         if rpm:
             phrase = (phrase + " (RPM)").strip()
@@ -128,58 +124,22 @@ def _pretty_reg_name(key: str) -> str:
     phrase = " ".join(words).strip()
     if rpm:
         phrase = (phrase + " (RPM)").strip()
-    return phrase[:1].upper() + phrase[1:] if phrase else s
-
-
+    return phrase[:1].upper() + phrase[1:] if phrase else base
 
 
 def _suggested_object_id(key: str) -> str:
     """Generate a short, stable object_id (used for entity_id on first create)."""
-    s = key.lower()
-    for prefix in (
-        "systemair_save_vtr_",
-        "save_vtr_",
-        "vtr_",
-        "systemair_",
-    ):
-        if s.startswith(prefix):
-            s = s[len(prefix):]
-            # Strip model number prefix like "500_" if present
-            m = re.match(r"^\d+_(.+)$", s)
-            if m:
-                s = m.group(1)
-
-            break
-    # keep only safe chars
+    s = _strip_prefixes(key).lower()
     s = re.sub(r"[^a-z0-9_]+", "_", s).strip("_")
     if not s:
         s = "value"
-    if s[0].isdigit():
-        s = f"vtr500_{s}"
-    else:
-        s = f"vtr500_{s}"
-    return s
-
+    # Always prefix with save_ for a consistent namespace in entity_id
+    return f"save_{s}"
 
 
 def _base_key(key: str) -> str:
     """Normalize a register key to its logical base (no device/model prefixes)."""
-    s = key.lower().strip()
-    for prefix in (
-        "systemair_save_vtr_",
-        "save_vtr_",
-        "vtr_",
-        "systemair_",
-    ):
-        if s.startswith(prefix):
-            s = s[len(prefix):]
-            # Strip model number prefix like "500_" if present
-            m = re.match(r"^\d+_(.+)$", s)
-            if m:
-                s = m.group(1)
-
-            break
-    return s.strip("_")
+    return _strip_prefixes(key).lower().strip("_")
 
 
 # Raw register sensors: keep only the most useful enabled by default.
@@ -235,9 +195,10 @@ class SystemairRegisterSensor(SystemairBaseEntity, SensorEntity):
         super().__init__(entry, coordinator)
         self._key = reg.key
 
-        # Use a stable unique_id format (history is OK to break, but still keep it deterministic)
+        # Deterministic unique_id (OK that history breaks right now)
         self._attr_unique_id = f"{entry.entry_id}_reg_{reg.key}"
         self._attr_suggested_object_id = _suggested_object_id(reg.key)
+
         base_key = _base_key(reg.key)
         if base_key in ENABLED_RAW_KEYS:
             self._attr_translation_key = base_key

@@ -1,4 +1,4 @@
-"""Climate platform for Systemair Modbus (VTR500)."""
+"""Climate platform for Systemair Modbus (SAVE)."""
 from __future__ import annotations
 
 from homeassistant.components.climate import ClimateEntity
@@ -75,7 +75,7 @@ class SystemairVTRClimate(SystemairBaseEntity, ClimateEntity):
             return default
 
     def _stop_allowed(self) -> bool:
-        # key from old unique_id: vtr500_fan_manual_stop_allowed_reg
+        # key from old unique_id: save_fan_manual_stop_allowed_reg
         # Internal key becomes fan_manual_stop_allowed_reg
         allowed = self._get_int("fan_manual_stop_allowed_reg", 1)
         return allowed == 1

@@ -16,6 +16,6 @@ DEFAULT_SCAN_INTERVAL = 10  # seconds
 PLATFORMS: list[str] = ["sensor", "binary_sensor", "switch", "select", "number", "climate", "button"]
 
 # Modell-IDer må matche models/*.py
-MODEL_VTR500 = "vtr500"
-SUPPORTED_MODELS = [MODEL_VTR500]
+MODEL_SAVE = "save"
+SUPPORTED_MODELS = [MODEL_SAVE]
 
