@@ -1,31 +1,72 @@
 # Home Assistant – Systemair Modbus (SAVE)
 
-> [Les denne guiden på norsk](README.md)
+This is a **Home Assistant integration for Systemair SAVE air handling units**
+with support for **Modbus TCP**.
 
-This is a **Home Assistant integration for Systemair SAVE ventilation units**
-using **Modbus TCP**.
+The integration provides structured monitoring and control of the ventilation
+system in Home Assistant, with a focus on **correct airflow, energy-efficient
+operation, and stable entity handling**.
 
-⚠️ This is an unofficial community project and is not developed, supported, or
-maintained by Systemair.
+⚠️ **Notice:**  
+This is an **unofficial community project** and is **not developed, supported,
+or maintained by Systemair**.
+
+---
+
+## 🏗️ Prerequisites – unit selection and airflow
+
+This integration assumes that the ventilation system is **properly designed
+and correctly dimensioned**.
+
+- The air handling unit must be selected based on actual airflow requirements (m³/h)
+- Airflows per zone must be correctly balanced and commissioned
+- Home Assistant does **not** replace professional ventilation design
+
+The integration builds on the unit’s existing configuration and provides:
+- monitoring
+- control
+- automation
+
+Incorrect unit selection or airflow configuration cannot be compensated for by software.
 
 ---
 
 ## ✨ Features
 
-- Full monitoring of the ventilation unit
-  - Temperatures, fan speeds, heat recovery, and alarms
-- Mode and fan speed control
-  - Auto, Manual (Low / Normal / High), Party, Boost, Away, and Holiday
-- Built-in **action buttons** for common operations
-- **Pressure Guard** exposed as a dedicated status (read-only safety function)
-- Norwegian and English user interface (follows Home Assistant language settings)
+### Ventilation and operation
+- Display of actual operation based on the unit’s configuration
+- Temperatures (outdoor, supply air, extract air, reheater, etc.)
+- Fan speeds and operating status
+- Heat recovery
+- Filter status and alarms
+
+### Energy efficiency
+- **Eco mode**
+- Demand-controlled ventilation (where supported by the unit)
+- Away and Holiday modes
+- Energy-efficient operation based on load and unit configuration
+
+### Comfort
+- **Free cooling** when conditions are met
+- Party and Boost modes
+- Manual fan speed control (Low / Normal / High)
+
+### User experience
+- Norwegian and English language support (follows Home Assistant language)
+- Consistent and stable entities
+- Built-in **buttons** for common actions
 - Robust handling of temporary Modbus connection loss
 
-The image below shows an example of a Lovelace card that can be built manually
-in Home Assistant using entities provided by this integration.
-The card itself is not included with the integration.
+---
 
-![Ventilation Card Example](image/Ventilasjon%20kort.png)
+## 🖥️ Example Lovelace card
+
+The image below shows an example Lovelace card built manually in Home Assistant
+using entities provided by this integration.
+
+> The card itself is **not included** and can be freely customized to suit your setup.
+
+![Ventilation Card](image/Ventilasjon%20kort.png)
 
 ---
 
@@ -34,7 +75,9 @@ The card itself is not included with the integration.
 ### Requirements
 - Home Assistant **2024.6** or newer
 - Systemair SAVE unit with Modbus access
-- Modbus TCP (built-in or via external gateway)
+- Modbus TCP  
+  - Built-in to the unit **or**
+  - Via an external gateway (e.g. Elfin EW11)
 - HACS (Home Assistant Community Store)
 
 ### Installing the integration
@@ -43,50 +86,45 @@ The card itself is not included with the integration.
 3. Add this repository as an **Integration**
 4. Install **Systemair Modbus**
 5. Restart Home Assistant
-6. Go to **Settings → Devices & Services → Add Integration**
+6. Go to **Settings → Devices & Services → Add integration**
 7. Select **Systemair Modbus** and enter:
    - IP address
-   - Port (usually 502)
+   - Port (usually `502`)
    - Modbus slave ID
 
 ---
 
-## ℹ️ Important information
+## ℹ️ Limitations and technical notes
 
-### Pressure Guard
-Pressure Guard is an **internal safety function** in the ventilation unit and
-cannot be manually enabled or disabled.
-The integration only indicates whether Pressure Guard is **active or inactive**.
-
-### Stop function
-Not all Systemair units support a full stop via Modbus.
-For this reason, **Stop** may be implemented as a *soft stop*
-(low fan speed) when a full stop is not available.
+- **Pressure Guard** is an internal safety function of the unit  
+  → exposed as status only (read-only)
+- Not all SAVE models support full stop via Modbus  
+  → where full stop is unavailable, the lowest possible fan speed is used
+- Available features depend on unit model and configuration
 
 ---
 
 ## 🔌 Physical installation – Elfin EW11 (Modbus RTU → TCP)
 
-This section is relevant **if the ventilation unit does not have built-in
-Modbus TCP** and an external gateway is used, such as the **Elfin EW11**.
+This section is only relevant if the unit does **not** have built-in Modbus TCP.
 
 ### ⚠️ WARNING
-Always disconnect power to the ventilation unit before opening it.  
-If unsure, consult a qualified professional.
+Always disconnect power to the air handling unit before opening it.  
+If unsure, contact a qualified professional.
 
-### 1. Connect Modbus on the Systemair unit
-Locate the external communication terminal on the main control board, labeled:
-- `A(+)`
-- `B(-)`
+### 1. Modbus connection on Systemair SAVE
+Locate the external communication terminals on the main control board:
+- `A (+)`
+- `B (–)`
 - `24V`
 - `GND`
 
-![Example wiring (VTR-500)](image/koblingsskjemaVTR-500.png)
+![Example wiring diagram (VTR-500)](image/koblingsskjemaVTR-500.png)
 
 ### 2. Connect the Elfin EW11
-Wire the Elfin EW11 according to the diagram below:
+Wire the connections according to the diagram below:
 
-![Elfin EW11 wiring](image/koblings%20skjema%20EW11.png)
+![EW11 wiring diagram](image/koblings%20skjema%20EW11.png)
 
 ---
 
@@ -94,42 +132,40 @@ Wire the Elfin EW11 according to the diagram below:
 
 1. Connect to the Wi-Fi network `EW1x_...` (open network)
 2. Open the web interface: `http://10.10.100.254`
-3. Log in using:
+3. Log in with:
    - Username: `admin`
    - Password: `admin`
 4. Go to **System Settings → WiFi Settings**
    - Set **WiFi Mode** to `STA`
-   - Connect to your home network
-5. Restart the device and assign a **static IP address**
-6. Go to **Serial Port Settings** and configure as shown:
+   - Connect to your local network
+5. Restart the device and assign a **static IP**
+6. Open **Serial Port Settings** and configure as shown:
 
 ![Serial Port Settings EW11](image/serial%20port%20settings%20EW11.png)
 
-7. Go to **Communication Settings** and add a Modbus profile:
+7. Open **Communication Settings** and add a Modbus profile:
 
 ![Communication Settings EW11](image/communication%20settings%20EW11.png)
 
-8. On the **Status** page, packet counters should start increasing:
+8. Under **Status**, packet counters should increase:
 
 ![EW11 communication status](image/kommunikasjon%20EW11.png)
 
-Once communication is confirmed, the IP address can be used directly in the
-Home Assistant integration.
+Once communication is confirmed, the IP address can be used directly in Home Assistant.
 
 ---
 
 ## 🙏 Acknowledgements
 
 The Elfin EW11 (Modbus RTU → TCP) installation guide is based on work published on
-[domotics.no](https://www.domotics.no/) by Mads Nedrehagen.
+[domotics.no](https://www.domotics.no/), written by **Mads Nedrehagen**.
 
-In addition, an AI assistant was used as a supporting tool for troubleshooting,
-refactoring, and improving documentation during development.
+An AI assistant has been used to support troubleshooting, refactoring,
+and documentation improvements during development.
 
-This integration is **independently developed** as a modern Home Assistant
-integration.
+This integration is **independently developed** as a modern Home Assistant integration.
 
 ---
 
 ## 📝 License
-MIT – see `LICENSE`.
+MIT – see `LICENSE`
