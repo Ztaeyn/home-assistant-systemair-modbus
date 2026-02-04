@@ -40,6 +40,42 @@ Dette er et **uoffisielt community-prosjekt** og er ikke utviklet, støttet elle
 
 ---
 
+## 📋 Systemair SAVE – støttede modeller
+ 
+**Luftmengde-estimat (m³/h)** er kun tilgjengelig for modeller som er eksplisitt definert i koden.
+
+**Forklaring:**
+- ✅ = Ja / tilgjengelig  
+- ⚙️ = Støttet, men ikke testet  
+- ❌ = Ikke tilgjengelig  
+
+> Har du testet integrasjonen med en modell som ikke er markert som testet?  
+> Gi gjerne beskjed via Issue, så kan listen oppdateres.
+
+| Serie | Modell / Type | Modbus-støtte | Luftmengde-estimat (m³/h) | Testet |
+|-------|---------------|---------------|---------------------------|--------|
+| VSR | VSR 150/B | ✅ | ✅ | ❌ |
+| VSR | VSR 200/B | ✅ | ✅ | ❌ |
+| VSR | VSR 300 | ✅ | ✅ | ❌ |
+| VSR | VSR 400 | ✅ | ✅ | ❌ |
+| VSR | VSR 500 | ✅ | ✅ | ❌ |
+| VSR | VSR 700 | ✅ | ✅ | ❌ |
+| VTR | VTR 100/B | ✅ | ✅ | ❌ |
+| VTR | VTR 150/B | ✅ | ✅ | ❌ |
+| VTR | VTR 250/B | ✅ | ✅ | ❌ |
+| VTR | VTR 275/B | ✅ | ✅ | ❌ |
+| VTR | VTR 350/B | ✅ | ✅ | ❌ |
+| VTR | VTR 500 | ✅ | ✅ | ✅ |
+| VTR | VTR 700 | ✅ | ✅ | ❌ |
+| VTC | VTC 200–1 | ✅ | ❌ | ❌ |
+| VTC | VTC 300 | ✅ | ❌ | ❌ |
+| VTC | VTC 500 | ✅ | ❌ | ❌ |
+| VTC | VTC 700 | ✅ | ❌ | ❌ |
+| VSC | VSC 100 | ✅ | ❌ | ❌ |
+| VSC | VSC 200 | ✅ | ❌ | ❌ |
+| VSC | VSC 300 | ✅ | ❌ | ❌ |
+
+---
 
 ## 🏗️ Forutsetninger – aggregat og luftmengde
 
