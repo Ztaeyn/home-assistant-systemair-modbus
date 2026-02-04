@@ -13,24 +13,6 @@ or maintained by Systemair**.
 
 ---
 
-## 🏗️ Prerequisites – unit selection and airflow
-
-This integration assumes that the ventilation system is **properly designed
-and correctly dimensioned**.
-
-- The air handling unit must be selected based on actual airflow requirements (m³/h)
-- Airflows per zone must be correctly balanced and commissioned
-- Home Assistant does **not** replace professional ventilation design
-
-The integration builds on the unit’s existing configuration and provides:
-- monitoring
-- control
-- automation
-
-Incorrect unit selection or airflow configuration cannot be compensated for by software.
-
----
-
 ## ✨ Features
 
 ### Ventilation and operation
@@ -56,6 +38,24 @@ Incorrect unit selection or airflow configuration cannot be compensated for by s
 - Consistent and stable entities
 - Built-in **buttons** for common actions
 - Robust handling of temporary Modbus connection loss
+
+---
+
+## 🏗️ Prerequisites – unit selection and airflow
+
+This integration assumes that the ventilation system is **properly designed
+and correctly dimensioned**.
+
+- The air handling unit must be selected based on actual airflow requirements (m³/h)
+- Airflows per zone must be correctly balanced and commissioned
+- Home Assistant does **not** replace professional ventilation design
+
+The integration builds on the unit’s existing configuration and provides:
+- monitoring
+- control
+- automation
+
+Incorrect unit selection or airflow configuration cannot be compensated for by software.
 
 ---
 
