@@ -1,9 +1,12 @@
 {
   "name": "Systemair Modbus",
   "content_in_root": true,
+  "content": "systemair_modbus",
   "country": ["NO", "SE", "DK", "DE", "GB", "NL"],
   "homeassistant": "2024.6.0"
 }
+
+
 
 
 
