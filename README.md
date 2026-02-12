@@ -1,5 +1,7 @@
 # Home Assistant – Systemair Modbus (SAVE)
 
+**Norsk** · [Les på norsk](README.no.md)
+
 This is a **Home Assistant integration for Systemair SAVE air handling units**
 with support for **Modbus TCP**.
 
