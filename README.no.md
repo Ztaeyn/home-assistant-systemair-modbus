@@ -2,6 +2,7 @@
 
 **English** · [Read in English](README.md)
 
+[![HACS](https://img.shields.io/badge/HACS-Default-green.svg)](https://hacs.xyz/)
 
 Dette er en **Home Assistant-integrasjon for Systemair SAVE-aggregater** med støtte for **Modbus TCP**.
 
@@ -9,7 +10,6 @@ Integrasjonen gir strukturert overvåking og styring av ventilasjonsaggregatet i
 
 ⚠️ **Merk:**  
 Dette er et **uoffisielt community-prosjekt** og er ikke utviklet, støttet eller vedlikeholdt av Systemair.
-
 
 ---
 
@@ -42,7 +42,7 @@ Dette er et **uoffisielt community-prosjekt** og er ikke utviklet, støttet elle
 ---
 
 ## 📋 Systemair SAVE – støttede modeller
- 
+
 **Luftmengde-estimat (m³/h)** er kun tilgjengelig for modeller som er eksplisitt definert i koden.
 
 **Forklaring:**
@@ -116,14 +116,35 @@ ved hjelp av entiteter fra denne integrasjonen.
   - Via ekstern gateway (f.eks. Elfin EW11)
 - HACS (Home Assistant Community Store)
 
-### Installere integrasjonen
-1. Gå til **HACS → Integrations**
-2. Velg **Custom repositories**
-3. Legg til dette repoet som **Integration**
-4. Installer **Systemair Modbus**
+---
+
+### Metode 1: Installer via HACS (anbefalt)
+
+1. Åpne **HACS**
+2. Gå til **Integrations**
+3. Søk etter **Systemair Modbus**
+4. Trykk **Download**
 5. Start Home Assistant på nytt
 6. Gå til **Innstillinger → Enheter og tjenester → Legg til integrasjon**
 7. Velg **Systemair Modbus** og fyll inn:
+   - IP-adresse
+   - Port (vanligvis `502`)
+   - Modbus slave-ID
+
+---
+
+### Metode 2: Installer som custom repository (manuelt)
+
+> Denne metoden er primært ment for utvikling, testing eller tidlig tilgang til endringer.
+
+1. Åpne **HACS**
+2. Gå til **Integrations**
+3. Åpne menyen (tre prikker) → **Custom repositories**
+4. Legg til dette repoet som **Integration**
+5. Installer **Systemair Modbus**
+6. Start Home Assistant på nytt
+7. Gå til **Innstillinger → Enheter og tjenester → Legg til integrasjon**
+8. Velg **Systemair Modbus** og fyll inn:
    - IP-adresse
    - Port (vanligvis `502`)
    - Modbus slave-ID
@@ -200,16 +221,9 @@ Mads Nedrehagen.
 I tillegg har en KI-assistent blitt brukt som støtte til feilsøking,
 refaktorering og forbedring av dokumentasjon under utviklingen av prosjektet.
 
-
 Denne integrasjonen er **selvstendig utviklet** som en moderne Home Assistant-integrasjon.
 
 ---
 
 ## 📝 Lisens
-MIT – se `LICENSE`.
-
-
-
-
-
-
+MIT – se `LICENSE`
