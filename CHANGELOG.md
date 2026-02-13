@@ -7,11 +7,11 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ---
 
-## [0.1.0] – 2026-02-04
-### 🚀 First stable release
+## [1.0.0] – 2026-02-13
+### 🚀 First stable HACS release
 
 ### Added
-- First stable and fully tested release of **Systemair Modbus**
+- First stable release of **Systemair Modbus** available via HACS
 - UI-based setup via Home Assistant Config Flow
 - Support for Systemair SAVE ventilation units using Modbus TCP
 - Sensors for temperatures, operational status, and calculated values
@@ -24,4 +24,5 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Notes
 - This is an unofficial community integration and is not affiliated with Systemair
+
 
