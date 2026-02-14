@@ -47,12 +47,15 @@ or maintained by Systemair**.
 
 ## 📋 Systemair SAVE – supported models
 
-**Airflow estimation (m³/h)** is only available for models that are explicitly defined in the code.
+**Airflow estimation (m³/h)** is only available for models that are explicitly defined in the code and share the expected Modbus register layout.
 
 **Legend:**
 - ✅ = Yes / available  
 - ⚙️ = Supported, but not tested  
 - ❌ = Not available  
+
+> ⚠️ Note: Older units with **CD4 controller** may use a different Modbus register map than units with **SAVE Touch**.  
+> These units are not fully verified yet and may require adjustments. Please open an Issue if you test such a unit.
 
 > Have you tested the integration with a model that is not marked as tested?  
 > Please let me know by opening an Issue so this list can be updated.
@@ -69,6 +72,7 @@ or maintained by Systemair**.
 | VTR | VTR 150/B | ✅ | ✅ | ❌ |
 | VTR | VTR 250/B | ✅ | ✅ | ❌ |
 | VTR | VTR 275/B | ✅ | ✅ | ❌ |
+| VTR | VTR 300 | ✅ | ✅ | ⚙️ |
 | VTR | VTR 350/B | ✅ | ✅ | ❌ |
 | VTR | VTR 500 | ✅ | ✅ | ✅ |
 | VTR | VTR 700 | ✅ | ✅ | ❌ |
@@ -79,6 +83,9 @@ or maintained by Systemair**.
 | VSC | VSC 100 | ✅ | ❌ | ❌ |
 | VSC | VSC 200 | ✅ | ❌ | ❌ |
 | VSC | VSC 300 | ✅ | ❌ | ❌ |
+
+> ⚙️ VTR 300: Reported working by a community user, but exact variant (SAVE Touch vs CD4) is not yet confirmed.  
+> ✅ VTR 500: Confirmed working by a community user (tested with external Modbus TCP gateway).
 
 ---
 
