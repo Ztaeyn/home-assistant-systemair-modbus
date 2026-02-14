@@ -15,6 +15,13 @@ operation, and stable entity handling**.
 This is an **unofficial community project** and is **not developed, supported,
 or maintained by Systemair**.
 
+⚠️ **Disclaimer:**  
+This integration is provided **as-is**, without any warranty of any kind.  
+You use it **at your own risk**. The author is not responsible for any damage, data loss, or malfunction of your ventilation system, equipment, or property.
+
+Always verify changes directly on the unit and ensure your system is correctly configured.  
+If in doubt, consult a qualified technician.
+
 ---
 
 ## ✨ Features
