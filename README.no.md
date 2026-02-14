@@ -57,14 +57,14 @@ Er du i tvil, kontakt kvalifisert fagperson.
 - ⚙️ = Støttet, men ikke testet  
 - ❌ = Ikke tilgjengelig  
 
-> ⚠️ Merk: Eldre aggregater med **CD4-kontroller** kan bruke et annet Modbus-registerkart enn aggregater med **SAVE Touch**.  
-> Disse er ikke fullt verifisert ennå og kan kreve justeringer. Opprett gjerne en Issue hvis du tester et slikt aggregat.
+> ⚠️ Merk: Eldre enheter med **CD4-kontroller** kan bruke et annet Modbus-registerkart enn enheter med **SAVE Touch**.  
+> Disse er foreløpig ikke fullt verifisert og kan kreve justeringer. Opprett gjerne en Issue hvis du tester en slik enhet.
 
-> Har du testet integrasjonen med en modell som ikke er markert som testet?  
-> Gi gjerne beskjed via Issues, så kan listen oppdateres.
+> Har du testet integrasjonen med en modell som ikke er merket som testet?  
+> Gi gjerne beskjed ved å opprette en Issue, så kan denne listen oppdateres.
 
-| Serie | Modell / Type | Modbus-støtte | Luftmengde-estimat (m³/h) | Testet |
-|-------|---------------|---------------|---------------------------|--------|
+| Serie | Modell / Type | Modbus-støtte | Luftmengde-estimering (m³/h) | Testet |
+|-------|---------------|----------------|-------------------------------|--------|
 | VSR | VSR 150/B | ✅ | ✅ | ❌ |
 | VSR | VSR 200/B | ✅ | ✅ | ❌ |
 | VSR | VSR 300 | ✅ | ✅ | ❌ |
@@ -75,7 +75,7 @@ Er du i tvil, kontakt kvalifisert fagperson.
 | VTR | VTR 150/B | ✅ | ✅ | ❌ |
 | VTR | VTR 250/B | ✅ | ✅ | ❌ |
 | VTR | VTR 275/B | ✅ | ✅ | ❌ |
-| VTR | VTR 300 | ✅ | ✅ | ⚙️ |
+| VTR | VTR 300 | ✅ | ✅ | ✅ |
 | VTR | VTR 350/B | ✅ | ✅ | ❌ |
 | VTR | VTR 500 | ✅ | ✅ | ✅ |
 | VTR | VTR 700 | ✅ | ✅ | ❌ |
@@ -87,8 +87,9 @@ Er du i tvil, kontakt kvalifisert fagperson.
 | VSC | VSC 200 | ✅ | ❌ | ❌ |
 | VSC | VSC 300 | ✅ | ❌ | ❌ |
 
-> ⚙️ VTR 300: Rapportert fungerende av en bruker, men eksakt variant (SAVE Touch vs CD4) er ikke bekreftet ennå.  
-> ✅ VTR 500: Bekreftet fungerende av bruker (testet med ekstern Modbus TCP-gateway).
+> ✅ VTR 300: Bekreftet å fungere av en bruker i community (**SAVE Touch**, original Systemair Modbus-gateway, Modbus TCP).  
+> ✅ VTR 500: Bekreftet å fungere av en bruker i community (testet med ekstern Modbus TCP-gateway).  
+> ⚠️ CD4-enheter: Ikke verifisert enda og kan kreve et annet registerkart.
 
 ---
 
