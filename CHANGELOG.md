@@ -26,22 +26,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - This is an unofficial community integration and is not affiliated with Systemair
 
 
-## FORK Ztaeyn: Contributions from own project for owner of project to contemplate
+### Community attribution up for approval:
+- Climate entity: Added "HVAC.Heating", animating the Climate controller to display the temperature arc with a red hue with the status "heating".
 
-- Climate: Added HVAC.Heating, animating the Climate entity in HA to turn red and display heating. (This was a wanted feature in my own project)
-<img width="460" height="342" alt="image" src="https://github.com/user-attachments/assets/5f353fd2-2e24-4d8d-ab58-69c91abe0245" />
-
-
-### TODO
-- Weekly Schedule
-  Enable and configure fan settings for 2 periods per day.
-  <img width="793" height="354" alt="image" src="https://github.com/user-attachments/assets/5761d8dd-280a-4cc7-8c14-b764b64c81e9" />
-
-
-- Estimated power usage from the heating element / TRIAC. Sensor.py
-  This might differ from the models. Some doesn't have the heater, others might have a bigger one?
-  <img width="567" height="506" alt="image" src="https://github.com/user-attachments/assets/37d34865-f539-4b55-a9f5-81c636374def" />
-
-
-- Fireplace mode. 
 
